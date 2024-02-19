@@ -1,8 +1,10 @@
+import Layout from "../../Components/Layout";
+
 const MyOrder = () => {
     return(
-        <div>
-            MyOrder
-        </div>
+        <Layout>
+            Mi orden
+        </Layout>
     );
 };
 

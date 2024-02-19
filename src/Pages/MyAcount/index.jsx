@@ -1,8 +1,10 @@
+import Layout from "../../Components/Layout";
+
 const MyAcount = () => {
     return(
-        <div>
-            MyAcount
-        </div>
+        <Layout>
+            Mi cuenta
+        </Layout>
     );
 };
 
