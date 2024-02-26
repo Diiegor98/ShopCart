@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { ShopCartContext } from "../../Context";
 import { useContext } from "react";
+import { FiShoppingCart } from "react-icons/fi";
 
 const NavBar = () => {
   const activeStyle = "underline underline-offset-4";
@@ -73,7 +74,10 @@ const NavBar = () => {
         <li>
           <NavLink to="/iniciar-sesion">Iniciar sesión</NavLink>
         </li>
-        <li>Carrito {count}</li>
+        <li className="flex gap-2 justify-center items-center">
+          <FiShoppingCart></FiShoppingCart>
+          {count}
+        </li>
       </ul>
     </nav>
   );
