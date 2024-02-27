@@ -3,6 +3,7 @@ import "./checkoutsidemenu.css";
 import { IoCloseCircle } from "react-icons/io5";
 import { ShopCartContext } from "../../Context";
 import OrderCard from "../OrderCard";
+import { totalPrice } from "../../utils/index"
 
 const CheckoutSideMenu = () => {
   const {
@@ -41,6 +42,11 @@ const CheckoutSideMenu = () => {
             handleDelete={handleDelete}
           />
         ))}
+      </div>
+      <div className="px-6">
+        <p className="flex justify-between items-center">
+          <span className="font-light">Total: </span><span className="font-medium text-2x1">${totalPrice(cartProducts)}</span>
+        </p>
       </div>
     </aside>
   );
