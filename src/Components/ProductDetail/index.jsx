@@ -11,7 +11,7 @@ const ProductDetail = () => {
     <aside
       className={`${
         detailAside ? "flex" : "hidden"
-      } product-detail flex-col fixed right-0 border border-black rounded-lg bg-white overflow-y-auto`}
+      } product-detail flex-col fixed right-0 border border-black rounded-lg bg-white overflow-y-scroll`}
     >
       <div className="flex justify-between items-center p-3">
         <h2 className="font-medium text-xl">Detail</h2>

@@ -6,7 +6,7 @@ import { FiShoppingCart } from "react-icons/fi";
 const NavBar = () => {
   const activeStyle = "underline underline-offset-4";
 
-  const { count } = useContext(ShopCartContext);
+  const { cartProducts, setSearchCategory } = useContext(ShopCartContext);
 
   return (
     <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light">
@@ -17,6 +17,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/"
+            onClick={() => setSearchCategory()}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Todos
@@ -25,6 +26,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/ropa"
+            onClick={() => setSearchCategory('clothes')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Ropa
@@ -33,6 +35,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/electronica"
+            onClick={() => setSearchCategory('electronica')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Electronica
@@ -41,6 +44,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/muebles"
+            onClick={() => setSearchCategory('muebles')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Muebles
@@ -49,6 +53,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/juguetes"
+            onClick={() => setSearchCategory('juguetes')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Juguetes
@@ -57,6 +62,7 @@ const NavBar = () => {
         <li>
           <NavLink
             to="/otros"
+            onClick={() => setSearchCategory('otros')}
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
           >
             Otros
@@ -76,7 +82,7 @@ const NavBar = () => {
         </li>
         <li className="flex gap-2 justify-center items-center">
           <FiShoppingCart></FiShoppingCart>
-          {count}
+          {cartProducts.length}
         </li>
       </ul>
     </nav>

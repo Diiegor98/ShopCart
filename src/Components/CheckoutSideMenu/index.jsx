@@ -3,7 +3,8 @@ import "./checkoutsidemenu.css";
 import { IoCloseCircle } from "react-icons/io5";
 import { ShopCartContext } from "../../Context";
 import OrderCard from "../OrderCard";
-import { totalPrice } from "../../utils/index"
+import { totalPrice } from "../../utils/index";
+import { Link } from "react-router-dom";
 
 const CheckoutSideMenu = () => {
   const {
@@ -11,11 +12,27 @@ const CheckoutSideMenu = () => {
     closeCartProductsAside,
     cartProducts,
     setCartProducts,
+    order,
+    setOrder,
+    setSearchTitle
   } = useContext(ShopCartContext);
 
   const handleDelete = (id) => {
     const filteredProducts = cartProducts.filter((product) => product.id != id);
     setCartProducts(filteredProducts);
+  };
+
+  const handleCheckout = () => {
+    const orderToAdd = {
+      date: "01.02.23",
+      products: cartProducts,
+      totalProducts: cartProducts.length,
+      totalPrice: totalPrice(cartProducts),
+    };
+
+    setOrder([...order, orderToAdd]);
+    setCartProducts([]);
+    setSearchTitle(null)
   };
 
   return (
@@ -31,7 +48,7 @@ const CheckoutSideMenu = () => {
           onClick={() => closeCartProductsAside()}
         />
       </div>
-      <div className="px-6 ">
+      <div className="px-6 flex-1 overflow-y-scroll">
         {cartProducts.map((product) => (
           <OrderCard
             id={product.id}
@@ -45,8 +62,19 @@ const CheckoutSideMenu = () => {
       </div>
       <div className="px-6">
         <p className="flex justify-between items-center">
-          <span className="font-light">Total: </span><span className="font-medium text-2x1">${totalPrice(cartProducts)}</span>
+          <span className="font-light">Total: </span>
+          <span className="font-medium text-2xl">
+            ${totalPrice(cartProducts)}
+          </span>
         </p>
+        <Link to="/mis-ordenes/last">
+          <button
+            className="w-full bg-black py-3 my-3 text-white rounded-lg"
+            onClick={() => handleCheckout()}
+          >
+            Checkout
+          </button>
+        </Link>
       </div>
     </aside>
   );
