@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 
-const ShopCartContext = createContext();
+export const ShopCartContext = createContext();
 
-const ShopCartProvider = ({ children }) => {
+export const ShopCartProvider = ({ children }) => {
   //Contador de items en el carro
   const [count, setCount] = useState(0);
 
@@ -125,4 +125,4 @@ const ShopCartProvider = ({ children }) => {
   );
 };
 
-export { ShopCartContext, ShopCartProvider };
+
